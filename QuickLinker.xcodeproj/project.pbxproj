@@ -14,6 +14,7 @@
 		DE0347E719D4AF4600CC9431 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE0347E619D4AF4600CC9431 /* Images.xcassets */; };
 		DE0347EA19D4AF4600CC9431 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0347E819D4AF4600CC9431 /* LaunchScreen.xib */; };
 		DE0347F619D4AF4600CC9431 /* QuickLinkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0347F519D4AF4600CC9431 /* QuickLinkerTests.m */; };
+		DE03480619D4B18A00CC9431 /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE03480519D4B18A00CC9431 /* ToolBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		DE0347EF19D4AF4600CC9431 /* QuickLinkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLinkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE0347F419D4AF4600CC9431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE0347F519D4AF4600CC9431 /* QuickLinkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickLinkerTests.m; sourceTree = "<group>"; };
+		DE03480419D4B18A00CC9431 /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
+		DE03480519D4B18A00CC9431 /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +84,7 @@
 		DE0347D819D4AF4600CC9431 /* QuickLinker */ = {
 			isa = PBXGroup;
 			children = (
-				DE0347DD19D4AF4600CC9431 /* AppDelegate.h */,
-				DE0347DE19D4AF4600CC9431 /* AppDelegate.m */,
+				DE03480319D4B18A00CC9431 /* View */,
 				DE0347E019D4AF4600CC9431 /* ViewController.h */,
 				DE0347E119D4AF4600CC9431 /* ViewController.m */,
 				DE0347E319D4AF4600CC9431 /* Main.storyboard */,
@@ -96,6 +98,8 @@
 		DE0347D919D4AF4600CC9431 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE0347DD19D4AF4600CC9431 /* AppDelegate.h */,
+				DE0347DE19D4AF4600CC9431 /* AppDelegate.m */,
 				DE0347DA19D4AF4600CC9431 /* Info.plist */,
 				DE0347DB19D4AF4600CC9431 /* main.m */,
 			);
@@ -117,6 +121,15 @@
 				DE0347F419D4AF4600CC9431 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE03480319D4B18A00CC9431 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE03480419D4B18A00CC9431 /* ToolBarView.h */,
+				DE03480519D4B18A00CC9431 /* ToolBarView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +234,7 @@
 			files = (
 				DE0347E219D4AF4600CC9431 /* ViewController.m in Sources */,
 				DE0347DF19D4AF4600CC9431 /* AppDelegate.m in Sources */,
+				DE03480619D4B18A00CC9431 /* ToolBarView.m in Sources */,
 				DE0347DC19D4AF4600CC9431 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
