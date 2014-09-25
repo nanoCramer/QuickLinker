@@ -12,6 +12,7 @@
 const int KToolBarHeight = 45;
 
 @interface ViewController ()<toolBarProtocol>
+@property (nonatomic, strong)ToolBarView *mToolBarView;
 
 @end
 
@@ -22,22 +23,16 @@ const int KToolBarHeight = 45;
     // Do any additional setup after loading the view, typically from a nib.
     
     // 底部工具栏
-    ToolBarView *wToolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - KToolBarHeight, self.view.frame.size.width, KToolBarHeight)];
+    self.mToolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - KToolBarHeight, self.view.frame.size.width, KToolBarHeight)];
     
-    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] init];
-    model1.displayName = @"预览";
-    model1.tag = KPreviewButtonTag;
-    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] init];
-    model2.displayName = @"编辑";
-    model2.tag = KEditButtonTag;
-    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] init];
-    model3.displayName = @"设置";
-    model3.tag = KSettingButtonTag;
+    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
+    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
+    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
     NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
     
-    [wToolBarView setMToolBarButtonArray:modelArray];
-    wToolBarView.delegate = self;
-    [self.view addSubview:wToolBarView];
+    [self.mToolBarView setMToolBarButtonArray:modelArray];
+    self.mToolBarView.delegate = self;
+    [self.view addSubview:self.mToolBarView];
 }
 
 // toolBarProtocol
@@ -59,6 +54,18 @@ const int KToolBarHeight = 45;
             return;
             break;
             
+        case KAddButtonTag:
+            // TODO:
+            [self gotoSettingViewController];
+            return;
+            break;
+            
+        case KOkButtonTag:
+            // TODO:
+            [self gotoSettingViewController];
+            return;
+            break;
+            
         default:
             break;
     }
@@ -68,11 +75,26 @@ const int KToolBarHeight = 45;
 - (void)previewTodayExView
 {
     NSLog(@"previewTodayExView");
+    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
+    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
+    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
+    NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
+    
+    [self.mToolBarView setMToolBarButtonArray:modelArray];
+    [self.mToolBarView setNeedsDisplay];
 }
 
 - (void)editQuickLinkers
 {
     NSLog(@"editQuickLinkers");
+    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
+    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"添加" andTag:KAddButtonTag];
+    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"完成" andTag:KOkButtonTag];
+    ToolBarButtonModel *model4 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
+    NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, model4, nil];
+    
+    [self.mToolBarView setMToolBarButtonArray:modelArray];
+    [self.mToolBarView setNeedsDisplay];
 }
 
 - (void)gotoSettingViewController

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BFAEAAC6-4533-46D2-9250-F7A6286B0F1C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>QuickLinker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>34C9BB2EB7A3FE3B107AD0A5DA83B4FC048F462B</key>
+		<string>https://github.com/nanoCramer/QuickLinker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>QuickLinker.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>34C9BB2EB7A3FE3B107AD0A5DA83B4FC048F462B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nanoCramer/QuickLinker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>34C9BB2EB7A3FE3B107AD0A5DA83B4FC048F462B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>34C9BB2EB7A3FE3B107AD0A5DA83B4FC048F462B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>QuickLinker</string>
+		</dict>
+	</array>
+</dict>
+</plist>
