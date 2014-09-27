@@ -41,6 +41,8 @@
 - (void)drawSelf
 {
     [self setBackgroundColor:[UIColor clearColor]];
+    self.layer.borderWidth = 1;
+    self.layer.borderColor = [UIColor blueColor].CGColor;
     
     UIImageView *wImageView = [[UIImageView alloc] initWithFrame:CGRectMake((DragViewWidth - DragImageViewL) / 2, DragMargin, DragImageViewL, DragImageViewL)];
     [wImageView setImage:self.mDragViewModel.displayImage];

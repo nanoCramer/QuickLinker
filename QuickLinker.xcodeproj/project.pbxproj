@@ -48,8 +48,8 @@
 		DE0347DB19D4AF4600CC9431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE0347DD19D4AF4600CC9431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DE0347DE19D4AF4600CC9431 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DE0347E019D4AF4600CC9431 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DE0347E119D4AF4600CC9431 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DE0347E019D4AF4600CC9431 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = QuickLinker/ViewController.h; sourceTree = SOURCE_ROOT; };
+		DE0347E119D4AF4600CC9431 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = QuickLinker/ViewController.m; sourceTree = SOURCE_ROOT; };
 		DE0347E419D4AF4600CC9431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE0347E619D4AF4600CC9431 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DE0347E919D4AF4600CC9431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -120,15 +120,13 @@
 		DE0347D819D4AF4600CC9431 /* QuickLinker */ = {
 			isa = PBXGroup;
 			children = (
-				DE44CEE119D648270011B9E1 /* ThirdPartyTools */,
 				DE44CED719D648210011B9E1 /* ViewController */,
-				DE44CEC419D6481A0011B9E1 /* Image */,
 				DE03480319D4B18A00CC9431 /* View */,
-				DE0347E019D4AF4600CC9431 /* ViewController.h */,
-				DE0347E119D4AF4600CC9431 /* ViewController.m */,
 				DE0347E319D4AF4600CC9431 /* Main.storyboard */,
 				DE0347E619D4AF4600CC9431 /* Images.xcassets */,
 				DE0347E819D4AF4600CC9431 /* LaunchScreen.xib */,
+				DE44CEE119D648270011B9E1 /* ThirdPartyTools */,
+				DE44CEC419D6481A0011B9E1 /* Image */,
 				DE0347D919D4AF4600CC9431 /* Supporting Files */,
 			);
 			path = QuickLinker;
@@ -192,6 +190,8 @@
 		DE44CED719D648210011B9E1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DE0347E019D4AF4600CC9431 /* ViewController.h */,
+				DE0347E119D4AF4600CC9431 /* ViewController.m */,
 				DE44CED819D648210011B9E1 /* DragButtonsViewController.h */,
 				DE44CED919D648210011B9E1 /* DragButtonsViewController.m */,
 				DE44CEDA19D648210011B9E1 /* PreviewViewController.h */,

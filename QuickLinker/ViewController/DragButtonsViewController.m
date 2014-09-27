@@ -26,7 +26,7 @@
 #define MaginX 8                //x坐标留白
 #define MaginY 8                //y坐标留白
 #define SpaceYEcahButton 0      //y坐标button间隙
-#define SpaceXEcahButton 0      //每个按钮间空隙（x坐标）
+#define SpaceXEcahButton (self.view.frame.size.width-2*MaginX-NumOfButtonEachRow*DragViewWidth)/(NumOfButtonEachRow+1)      //每个按钮间空隙（x坐标）
 #define NumOfButtonEachRow 4    //每行最多几个按钮
 
 - (void)drawDragButtons

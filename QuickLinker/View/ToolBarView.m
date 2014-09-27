@@ -8,11 +8,6 @@
 
 #import "ToolBarView.h"
 
-#define KPreviewColor [UIColor redColor]
-//#define KPreviewButtonTag   0x101+1;
-//#define KEditButtonTag      0x101+2;
-//#define KSettingButtonTag   0x101+3;
-
 @interface ToolBarView ()
 @property (nonatomic, strong)NSMutableArray *mToolBarButtonArray;   // ToolBarButtonModel;
 @property (nonatomic, assign)NSInteger mButtonNumber;
