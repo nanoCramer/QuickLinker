@@ -158,4 +158,32 @@
     [mDragViewTypeChoiseView removeFromSuperview];
 }
 
+-(void)choiceQuickLinkType:(ButtonType)type
+{
+//    ButtonTypeContact = 0,
+//    ButtonTypeSafari,
+//    ButtonTypeApp,
+//    ButtonTypeSystem
+    switch (type) {
+        case ButtonTypeContact:
+            
+            break;
+         
+        case ButtonTypeSafari:
+            
+            break;
+          
+        case ButtonTypeApp:
+            
+            break;
+          
+        case ButtonTypeSystem:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

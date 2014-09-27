@@ -25,5 +25,6 @@ typedef NS_ENUM(NSInteger, ButtonType) {
 @protocol DragViewTypeChoiseViewProtocol <NSObject>
 
 -(void)removeDragViewTypeChoiseView;
+-(void)choiceQuickLinkType:(ButtonType)type;
 
 @end

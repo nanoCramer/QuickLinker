@@ -34,7 +34,7 @@
     tapGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tapGesture];
     
-    mMiddleView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - self.frame.size.width, self.frame.size.width, self.frame.size.width)];
+    mMiddleView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, self.frame.size.width)];
     mMiddleView.backgroundColor = [UIColor whiteColor];
     
     CGFloat buttonL = self.frame.size.width / 2;
@@ -88,24 +88,41 @@
     [mMiddleView addSubview:systemButton];
     
     [self addSubview:mMiddleView];
+    [self show];
 }
 
 - (void)show
 {
-    
+    [UIView animateWithDuration:0.5 animations:^{
+        [mMiddleView setFrame:CGRectMake(0, self.frame.size.height - self.frame.size.width, self.frame.size.width, self.frame.size.width)];
+    }];
+}
+
+- (void)hide
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [mMiddleView setFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, self.frame.size.width)];
+    } completion:^(BOOL finished) {
+        if ([self.delegate respondsToSelector:@selector(removeDragViewTypeChoiseView)]) {
+            [self.delegate removeDragViewTypeChoiseView];
+        }
+    }];
 }
 
 -(void)handleTapGesture:(UITapGestureRecognizer *)sender
 {
     NSLog(@"handleTapGesture");
-    if ([self.delegate respondsToSelector:@selector(removeDragViewTypeChoiseView)]) {
-        [self.delegate removeDragViewTypeChoiseView];
-    }
+    [self hide];
 }
 
 - (void)buttonPressed:(UIButton*)button
 {
     NSLog(@"buttonPressed");
+    [self hide];
+    
+    if ([self.delegate respondsToSelector:@selector(choiceQuickLinkType:)]) {
+        [self.delegate choiceQuickLinkType:button.tag];
+    }
 }
 
 @end
