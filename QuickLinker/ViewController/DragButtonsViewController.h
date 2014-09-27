@@ -11,8 +11,8 @@
 @protocol DragButtonsViewControllerProtocol;
 @interface DragButtonsViewController : UIViewController
 {
-    NSMutableArray *mDragButtons;
-    NSMutableArray *mDragButtonModels;
+    NSMutableArray *mDragButtons;       //UIDragView
+    NSMutableArray *mDragButtonModels;  //DragViewModel
 }
 @property (nonatomic, weak) id<DragButtonsViewControllerProtocol> delegate;
 -(void)reSetBgView;

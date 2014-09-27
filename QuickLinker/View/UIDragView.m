@@ -15,6 +15,9 @@
     UIImageView *mLogoImageView;
     UILabel *mNameLabel;
     UIButton *mDeleteButton;
+    
+    // LongPressGesture
+    UILongPressGestureRecognizer *longPress;
 }
 
 @property (nonatomic, assign)BOOL isDraging;
@@ -36,9 +39,15 @@
         
         [self drawSelf];
         
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drag:)];
+        longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drag:)];
         longPress.minimumPressDuration = 1;
         [self addGestureRecognizer:longPress];
+        
+        UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture:)];
+        //设置手势点击数,双击：点1下
+        tapGesture.numberOfTapsRequired=1;
+        // self添加手势识别
+        [self addGestureRecognizer:tapGesture];
         
     }
     return self;
@@ -93,12 +102,15 @@
     // TODO: 修改状态时，改变界面；
     switch (mDVStatus) {
         case DragViewStatusNormal:
+            longPress.minimumPressDuration = 1;
             mDeleteButton.hidden = YES;
             [self stopShake];
             break;
             
         case DragViewStatusEdit:
+            longPress.minimumPressDuration = 0.01;
             mDeleteButton.hidden = NO;
+            
             [self startShake];
             break;
             
@@ -110,10 +122,12 @@
 - (void)drag:(UILongPressGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:superView];
+    CGPoint pointInSelf = [sender locationInView:self];
     
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
         {
+            NSLog(@"UIGestureRecognizerStateBegan");
             lastPoint = point;
             if ([self.delegate respondsToSelector:@selector(enterEditMode)]) {
                 [self.delegate enterEditMode];
@@ -122,6 +136,7 @@
         }
         case UIGestureRecognizerStateChanged:
         {
+            NSLog(@"UIGestureRecognizerStateChanged");
             float offX = point.x - lastPoint.x;
             float offY = point.y - lastPoint.y;
             [self setCenter:CGPointMake(self.center.x + offX, self.center.y + offY)];
@@ -136,6 +151,11 @@
         }
         case UIGestureRecognizerStateEnded:
         {
+            NSLog(@"UIGestureRecognizerStateEnded");
+            if ((self.mDVStatus == DragViewStatusEdit) && (pointInSelf.x < self.frame.size.width / 3) && (pointInSelf.y < self.frame.size.height / 3) && !self.isDraging) {
+                [self deleteSelf];
+                return;
+            }
             [self stopDraging];
             
             __block BOOL shouldClickAndBack = NO;
@@ -161,18 +181,28 @@
         }
         case UIGestureRecognizerStateCancelled:
         {
+            NSLog(@"UIGestureRecognizerStateCancelled");
             self.isDraging = NO;
             [self stopDraging];
             break;
         }
         case UIGestureRecognizerStateFailed:
         {
+            NSLog(@"UIGestureRecognizerStateFailed");
             self.isDraging = NO;
             [self stopDraging];
             break;
         }
         default:
             break;
+    }
+}
+
+-(void)handleTapGesture:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"handleTapGesture");
+    if ([self.delegate respondsToSelector:@selector(clickDragView:)]) {
+        [self.delegate clickDragView:self];
     }
 }
 

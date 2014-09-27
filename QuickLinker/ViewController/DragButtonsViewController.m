@@ -10,6 +10,9 @@
 #import "UIDragView.h"
 
 @interface DragButtonsViewController ()<UIDragViewDelegate>
+{
+    BOOL isEditing;
+}
 
 @end
 
@@ -19,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor redColor]];
+    isEditing = NO;
     [self drawDragButtons];
     [self reSetBgView];
 }
@@ -66,11 +70,12 @@
     [mDragButtonModels addObject:wDragButtonModel5];
     
     for (int i = 0; i < [mDragButtonModels count]; i++) {
-        int row = i/NumOfButtonEachRow;//第几行
-        int col = i%NumOfButtonEachRow;//第几列
-        int orignX = MaginX + SpaceXEcahButton * (col+1) + DragViewWidth * col;
-        int orignY = MaginY + SpaceYEcahButton * (row+1) + DragViewHeight * row;
-        UIDragView *view = [[UIDragView alloc] initWithFrame:CGRectMake(orignX, orignY, DragViewWidth, DragViewHeight) andModel:[mDragButtonModels objectAtIndex:i] inView:self.view];
+//        int row = i/NumOfButtonEachRow;//第几行
+//        int col = i%NumOfButtonEachRow;//第几列
+//        int orignX = MaginX + SpaceXEcahButton * (col+1) + DragViewWidth * col;
+//        int orignY = MaginY + SpaceYEcahButton * (row+1) + DragViewHeight * row;
+//        UIDragView *view = [[UIDragView alloc] initWithFrame:CGRectMake(orignX, orignY, DragViewWidth, DragViewHeight) andModel:[mDragButtonModels objectAtIndex:i] inView:self.view];
+        UIDragView *view = [[UIDragView alloc] initWithFrame:CGRectZero andModel:[mDragButtonModels objectAtIndex:i] inView:self.view];
         [mDragButtons addObject:view];
         [view setDelegate:self];
         [view setTag:i];
@@ -173,10 +178,10 @@
 
 - (void)checkLocationOfOthers:(UIDragView *)dragView
 {
-    int indexOfShakingButton = 0;
+    int indexOfDragView = 0;
     for ( int i = 0; i < [mDragButtons count]; i++) {
         if (((UIDragView *)[mDragButtons objectAtIndex:i]).tag == dragView.tag) {
-            indexOfShakingButton = i;
+            indexOfDragView = i;
             break;
         }
     }
@@ -186,9 +191,13 @@
             CGRect shakingFrame = CGRectInset(dragView.frame, dragView.frame.size.width/4, dragView.frame.size.height/4);
             CGRect buttonFrame = CGRectInset(button.frame,dragView.frame.size.width/4, dragView.frame.size.height/4);
             if (CGRectIntersectsRect(shakingFrame, buttonFrame)) {
-                UIDragView *wShakingButton = [mDragButtons objectAtIndex:indexOfShakingButton];
-                [mDragButtons removeObject:wShakingButton];
-                [mDragButtons insertObject:wShakingButton atIndex:i];
+                DragViewModel *wModel = [mDragButtonModels objectAtIndex:indexOfDragView];
+                [mDragButtonModels removeObject:wModel];
+                [mDragButtonModels insertObject:wModel atIndex:i];
+                
+                UIDragView *wDragView = [mDragButtons objectAtIndex:indexOfDragView];
+                [mDragButtons removeObject:wDragView];
+                [mDragButtons insertObject:wDragView atIndex:i];
                 [self setButtonsFrameWithAnimate:YES withoutShakingButton:dragView];
                 break;
             }
@@ -198,26 +207,43 @@
 
 - (void)clickDragView:(UIDragView *)dragView
 {
-    
+    NSLog(@"clickDragView");
 }
 
 - (void)deleteDragView:(UIDragView *)dragView
 {
+    NSLog(@"deleteDragView");
+    [dragView removeFromSuperview];
     
+    int indexOfDragView = 0;
+    for ( int i = 0; i < [mDragButtons count]; i++) {
+        if (((UIDragView *)[mDragButtons objectAtIndex:i]).tag == dragView.tag) {
+            indexOfDragView = i;
+            break;
+        }
+    }
+    [mDragButtonModels removeObjectAtIndex:indexOfDragView];
+    [mDragButtons removeObjectAtIndex:indexOfDragView];
+    [self setButtonsFrameWithAnimate:YES withoutShakingButton:nil];
 }
 
 - (void)enterEditMode
 {
+    if (isEditing == YES) {
+        return;
+    }
     for (UIDragView *wDragView in mDragButtons) {
         [wDragView setMDVStatus:DragViewStatusEdit];
     }
     if ([self.delegate respondsToSelector:@selector(dBVCEnterEditMode)]) {
         [self.delegate dBVCEnterEditMode];
     }
+    isEditing = YES;
 }
 
 - (void)enterNormalMode
 {
+    isEditing = NO;
     for (UIDragView *wDragView in mDragButtons) {
         [wDragView setMDVStatus:DragViewStatusNormal];
     }
