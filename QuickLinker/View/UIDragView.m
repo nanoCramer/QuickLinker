@@ -10,6 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface UIDragView()
+{
+    // UI
+    UIImageView *mLogoImageView;
+    UILabel *mNameLabel;
+    UIButton *mDeleteButton;
+}
 
 @property (nonatomic, assign)BOOL isDraging;
 
@@ -31,7 +37,7 @@
         [self drawSelf];
         
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drag:)];
-        longPress.minimumPressDuration = 0.01;
+        longPress.minimumPressDuration = 1;
         [self addGestureRecognizer:longPress];
         
     }
@@ -40,24 +46,65 @@
 
 - (void)drawSelf
 {
+    mLogoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((DragViewWidth - DragImageViewL) / 2, DragMargin, DragImageViewL, DragImageViewL)];
+    [mLogoImageView setImage:self.mDragViewModel.displayImage];
+    mLogoImageView.layer.cornerRadius = 12;
+    mLogoImageView.layer.borderWidth = 0.0;
+    mLogoImageView.layer.masksToBounds = YES;
+    
+    mNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(DragMargin, DragImageViewL + 2 * DragMargin, DragViewWidth - 2 * DragMargin, DragViewHeight - DragImageViewL - 3 * DragMargin)];
+    [mNameLabel setBackgroundColor:[UIColor clearColor]];
+    [mNameLabel setText:self.mDragViewModel.displayName];
+    [mNameLabel setTextColor:[UIColor whiteColor]];
+    [mNameLabel setTextAlignment:NSTextAlignmentCenter];
+    [mNameLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
+    
+    mDeleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [mDeleteButton setFrame:CGRectMake(0, 0, DragViewDeleteBtnL, DragViewDeleteBtnL)];
+    [mDeleteButton setBackgroundImage:[UIImage imageNamed:@"DragViewDelete.png"] forState:UIControlStateNormal];
+    [mDeleteButton addTarget:self action:@selector(deleteSelf) forControlEvents:UIControlEventTouchUpInside];
+    mDeleteButton.hidden = YES;
+    
     [self setBackgroundColor:[UIColor clearColor]];
-    self.layer.borderWidth = 1;
-    self.layer.borderColor = [UIColor blueColor].CGColor;
+    // TODO: 测试范围使用，记得删除
+//    self.layer.borderWidth = 1;
+//    self.layer.borderColor = [UIColor blueColor].CGColor;
     
-    UIImageView *wImageView = [[UIImageView alloc] initWithFrame:CGRectMake((DragViewWidth - DragImageViewL) / 2, DragMargin, DragImageViewL, DragImageViewL)];
-    [wImageView setImage:self.mDragViewModel.displayImage];
-    wImageView.layer.cornerRadius = 12;
-    wImageView.layer.borderWidth = 0.0;
-    wImageView.layer.masksToBounds = YES;
-    [self addSubview:wImageView];
+    [self addSubview:mLogoImageView];
+    [self addSubview:mNameLabel];
+    [self addSubview:mDeleteButton];
+}
+
+- (void)deleteSelf
+{
+    NSLog(@"deleteSelf");
+    if ([self.delegate respondsToSelector:@selector(deleteDragView:)]) {
+        [self.delegate deleteDragView:self];
+    }
+}
+
+- (void)setMDVStatus:(DragViewStatus)mDVStatus
+{
+    if (_mDVStatus == mDVStatus) {
+        return;
+    }
     
-    UILabel *wNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(DragMargin, DragImageViewL + 2 * DragMargin, DragViewWidth - 2 * DragMargin, DragViewHeight - DragImageViewL - 3 * DragMargin)];
-    [wNameLabel setBackgroundColor:[UIColor clearColor]];
-    [wNameLabel setText:self.mDragViewModel.displayName];
-    [wNameLabel setTextColor:[UIColor whiteColor]];
-    [wNameLabel setTextAlignment:NSTextAlignmentCenter];
-    [wNameLabel setFont:[UIFont boldSystemFontOfSize:12.0f]];
-    [self addSubview:wNameLabel];
+    _mDVStatus = mDVStatus;
+    // TODO: 修改状态时，改变界面；
+    switch (mDVStatus) {
+        case DragViewStatusNormal:
+            mDeleteButton.hidden = YES;
+            [self stopShake];
+            break;
+            
+        case DragViewStatusEdit:
+            mDeleteButton.hidden = NO;
+            [self startShake];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)drag:(UILongPressGestureRecognizer *)sender
@@ -67,10 +114,10 @@
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
         {
-            [self setAlpha:0.7];
             lastPoint = point;
-            [self.layer setShadowColor:[UIColor grayColor].CGColor];
-            [self startShake];
+            if ([self.delegate respondsToSelector:@selector(enterEditMode)]) {
+                [self.delegate enterEditMode];
+            }
             break;
         }
         case UIGestureRecognizerStateChanged:
@@ -79,15 +126,17 @@
             float offY = point.y - lastPoint.y;
             [self setCenter:CGPointMake(self.center.x + offX, self.center.y + offY)];
             lastPoint = point;
-            [delegate checkLocationOfOthersWithButton:self];
+            if ([self.delegate respondsToSelector:@selector(checkLocationOfOthers:)]) {
+                [self.delegate checkLocationOfOthers:self];
+            }
             self.isDraging = YES;
+            [self startDraging];
             
             break;
         }
         case UIGestureRecognizerStateEnded:
         {
-            [self stopShake];
-            [self setAlpha:1];
+            [self stopDraging];
             
             __block BOOL shouldClickAndBack = NO;
             [UIView animateWithDuration:0.5 animations:^{
@@ -99,7 +148,9 @@
             } completion:^(BOOL finished) {
                 [self.layer setShadowOpacity:0];
                 if (shouldClickAndBack) {
-                    [delegate clickButton:self];
+                    if ([self.delegate respondsToSelector:@selector(clickDragView:)]) {
+                        [self.delegate clickDragView:self];
+                    }
                     shouldClickAndBack = NO;
                 }
             }];
@@ -111,15 +162,13 @@
         case UIGestureRecognizerStateCancelled:
         {
             self.isDraging = NO;
-            [self stopShake];
-            [self setAlpha:1];
+            [self stopDraging];
             break;
         }
         case UIGestureRecognizerStateFailed:
         {
             self.isDraging = NO;
-            [self stopShake];
-            [self setAlpha:1];
+            [self stopDraging];
             break;
         }
         default:
@@ -127,17 +176,38 @@
     }
 }
 
+- (void)startDraging
+{
+    [self setAlpha:0.7];
+}
+
+- (void)stopDraging
+{
+    [self setAlpha:1];
+}
+
+#define KScaleValue  1.2
+//- (void)startScale
+//{
+//
+//}
+//
+//- (void)stopScale
+//{
+//
+//}
 
 - (void)startShake
 {
-    CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    shakeAnimation.duration = 0;
-    shakeAnimation.autoreverses = YES;
-    shakeAnimation.repeatCount = MAXFLOAT;
-    shakeAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, -0.01, 0, 0, 0)];
-    shakeAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DRotate(self.layer.transform, 0.01, 0, 0, 0)];
+    CABasicAnimation* rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];//"z"还可以是“x”“y”，表示沿z轴旋转
+    rotationAnimation.fromValue = [NSNumber numberWithFloat:-M_PI/36];
+    rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI/36];
+    rotationAnimation.autoreverses = YES;
+    rotationAnimation.repeatCount = MAXFLOAT;
+    rotationAnimation.duration = 0.15f;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]; //缓入缓出
     
-    [self.layer addAnimation:shakeAnimation forKey:@"shakeAnimation"];
+    [self.layer addAnimation:rotationAnimation forKey:@"shakeAnimation"];
 }
 
 - (void)stopShake

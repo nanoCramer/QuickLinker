@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DragButtonsViewControllerProtocol;
 @interface DragButtonsViewController : UIViewController
 {
     NSMutableArray *mDragButtons;
     NSMutableArray *mDragButtonModels;
 }
+@property (nonatomic, weak) id<DragButtonsViewControllerProtocol> delegate;
 -(void)reSetBgView;
+- (void)enterEditMode;
+- (void)enterNormalMode;
+@end
+
+@protocol DragButtonsViewControllerProtocol <NSObject>
+
+-(void)dBVCEnterEditMode;
+
 @end

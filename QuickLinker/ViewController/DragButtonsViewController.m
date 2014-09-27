@@ -80,31 +80,6 @@
     [self setButtonsFrameWithAnimate:NO withoutShakingButton:nil];
 }
 
-- (void)checkLocationOfOthersWithButton:(UIDragView *)shakingButton
-{
-    int indexOfShakingButton = 0;
-    for ( int i = 0; i < [mDragButtons count]; i++) {
-        if (((UIDragView *)[mDragButtons objectAtIndex:i]).tag == shakingButton.tag) {
-            indexOfShakingButton = i;
-            break;
-        }
-    }
-    for (int i = 0; i < [mDragButtons count]; i++) {
-        UIDragView *button = (UIDragView *)[mDragButtons objectAtIndex:i];
-        if (button.tag != shakingButton.tag){
-            CGRect shakingFrame = CGRectInset(shakingButton.frame, shakingButton.frame.size.width/4, shakingButton.frame.size.height/4);
-            CGRect buttonFrame = CGRectInset(button.frame,shakingButton.frame.size.width/4, shakingButton.frame.size.height/4);
-            if (CGRectIntersectsRect(shakingFrame, buttonFrame)) {
-                UIDragView *wShakingButton = [mDragButtons objectAtIndex:indexOfShakingButton];
-                [mDragButtons removeObject:wShakingButton];
-                [mDragButtons insertObject:wShakingButton atIndex:i];
-                [self setButtonsFrameWithAnimate:YES withoutShakingButton:shakingButton];
-                break;
-            }
-        }
-    }
-}
-
 - (void)setButtonsFrameWithAnimate:(BOOL)_bool withoutShakingButton:(UIDragView *)shakingButton
 {
     NSInteger count = [mDragButtons count];
@@ -196,9 +171,57 @@
     self.view.frame = viewRect;
 }
 
-- (void)clickButton:(UIDragView *)dragonButton
+- (void)checkLocationOfOthers:(UIDragView *)dragView
 {
-    NSLog(@"clickButton");
+    int indexOfShakingButton = 0;
+    for ( int i = 0; i < [mDragButtons count]; i++) {
+        if (((UIDragView *)[mDragButtons objectAtIndex:i]).tag == dragView.tag) {
+            indexOfShakingButton = i;
+            break;
+        }
+    }
+    for (int i = 0; i < [mDragButtons count]; i++) {
+        UIDragView *button = (UIDragView *)[mDragButtons objectAtIndex:i];
+        if (button.tag != dragView.tag){
+            CGRect shakingFrame = CGRectInset(dragView.frame, dragView.frame.size.width/4, dragView.frame.size.height/4);
+            CGRect buttonFrame = CGRectInset(button.frame,dragView.frame.size.width/4, dragView.frame.size.height/4);
+            if (CGRectIntersectsRect(shakingFrame, buttonFrame)) {
+                UIDragView *wShakingButton = [mDragButtons objectAtIndex:indexOfShakingButton];
+                [mDragButtons removeObject:wShakingButton];
+                [mDragButtons insertObject:wShakingButton atIndex:i];
+                [self setButtonsFrameWithAnimate:YES withoutShakingButton:dragView];
+                break;
+            }
+        }
+    }
 }
+
+- (void)clickDragView:(UIDragView *)dragView
+{
+    
+}
+
+- (void)deleteDragView:(UIDragView *)dragView
+{
+    
+}
+
+- (void)enterEditMode
+{
+    for (UIDragView *wDragView in mDragButtons) {
+        [wDragView setMDVStatus:DragViewStatusEdit];
+    }
+    if ([self.delegate respondsToSelector:@selector(dBVCEnterEditMode)]) {
+        [self.delegate dBVCEnterEditMode];
+    }
+}
+
+- (void)enterNormalMode
+{
+    for (UIDragView *wDragView in mDragButtons) {
+        [wDragView setMDVStatus:DragViewStatusNormal];
+    }
+}
+
 
 @end

@@ -14,13 +14,31 @@
 #define DragImageViewL  60
 #define DragMargin      4
 
+#define DragViewDeleteBtnL  18
+
+typedef NS_ENUM(NSInteger, DragViewType) {
+    DVTypeContactCall = 0,
+    DVTypeContactMessage,
+    DVTypeContactMail,
+    DVTypeSafariLink,
+    DVTypeAppLink,
+    DVTypeSystemLink
+};
+
+typedef NS_ENUM(NSInteger, DragViewStatus) {
+    DragViewStatusNormal,
+    DragViewStatusEdit
+};
+
 
 @class UIDragView;
 
 @protocol UIDragViewDelegate <NSObject>
 
-- (void)checkLocationOfOthersWithButton:(UIDragView *)shakingButton;
-- (void)clickButton:(UIDragView *)dragonButton;//点击上侧按钮，保存返回，显示该tab页面；
+- (void)checkLocationOfOthers:(UIDragView *)dragView;
+- (void)clickDragView:(UIDragView *)dragView;
+- (void)deleteDragView:(UIDragView *)dragView;
+- (void)enterEditMode;
 
 @end
 
@@ -32,8 +50,9 @@
 }
 
 @property (nonatomic, assign) CGPoint lastCenter;
-@property (nonatomic, assign) id<UIDragViewDelegate> delegate;
+@property (nonatomic, weak) id<UIDragViewDelegate> delegate;
 @property (nonatomic, strong) DragViewModel *mDragViewModel;
+@property (nonatomic, assign) DragViewStatus mDVStatus;
 
 - (instancetype)initWithFrame:(CGRect)frame andModel:(DragViewModel *)model inView:(UIView *)view;
 
@@ -46,7 +65,7 @@
 @interface DragViewModel : NSObject
 @property(nonatomic, strong)UIImage *displayImage;
 @property(nonatomic, strong)NSString *displayName;
-//@property(nonatomic, assign)类型
+@property(nonatomic, assign)DragViewType displayType;
 @property(nonatomic, strong)NSString *displayUrl;
 
 

@@ -13,7 +13,7 @@
 #import "SettingViewController.h"
 #import "DragButtonsViewController.h"
 
-@interface ViewController ()<toolBarProtocol>
+@interface ViewController ()<toolBarProtocol, DragButtonsViewControllerProtocol>
 @property (nonatomic, strong)ToolBarView *mToolBarView;
 @property (nonatomic, strong)MRFlipTransition *previewAnimator;
 @property (nonatomic, strong)MRFlipTransition *settingAnimator;
@@ -28,21 +28,22 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     // 按钮组件框
-    self.mDragButtonsVC = [[DragButtonsViewController alloc] init];
-    [self.mDragButtonsVC.view setFrame:CGRectMake(0, 20, self.view.frame.size.width, 200)];
-    [self.mDragButtonsVC reSetBgView];
+    DragButtonsViewController *wDragButtonsVC = [[DragButtonsViewController alloc] init];
+    [wDragButtonsVC.view setFrame:CGRectMake(0, 20, self.view.frame.size.width, 200)];
+    [wDragButtonsVC setDelegate:self];
+    [wDragButtonsVC reSetBgView];
+    self.mDragButtonsVC = wDragButtonsVC;
     [self.view addSubview:self.mDragButtonsVC.view];
-    
-    // 底部工具栏
-    self.mToolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - KToolBarHeight, self.view.frame.size.width, KToolBarHeight)];
     
     ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
     ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
     ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
     NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
-    
-    [self.mToolBarView setMToolBarButtonArray:modelArray];
-    self.mToolBarView.delegate = self;
+    // 底部工具栏
+    ToolBarView *wToolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - KToolBarHeight, self.view.frame.size.width, KToolBarHeight)];
+    [wToolBarView setMToolBarButtonArray:modelArray];
+    wToolBarView.delegate = self;
+    self.mToolBarView = wToolBarView;
     [self.view addSubview:self.mToolBarView];
     
     // 页面跳转
@@ -97,6 +98,13 @@
 - (void)editQuickLinkers
 {
     NSLog(@"editQuickLinkers");
+    
+    [self toolBarEnterEditMode];
+    [self.mDragButtonsVC enterEditMode];
+}
+
+- (void)toolBarEnterEditMode
+{
     ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
     ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"添加" andTag:KAddButtonTag];
     ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"完成" andTag:KOkButtonTag];
@@ -112,18 +120,25 @@
     NSLog(@"gotoSettingViewController");
     SettingViewController *controller = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
     [self.settingAnimator present:controller from:MRFlipTransitionPresentingFromInfinityAway completion:nil];
-    //    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
-    //    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
-    //    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
-    //    NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
-    //
-    //    [self.mToolBarView setMToolBarButtonArray:modelArray];
-    //    [self.mToolBarView setNeedsDisplay];
 }
 
 - (void)pressedAddButton
 {
     NSLog(@"pressedAddButton");
+//    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
+//    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
+//    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
+//    NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
+//    
+//    [self.mToolBarView setMToolBarButtonArray:modelArray];
+//    [self.mToolBarView setNeedsDisplay];
+}
+
+- (void)pressedOkButton
+{
+    NSLog(@"pressedOkButton");
+    [self.mDragButtonsVC enterNormalMode];
+    
     ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
     ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
     ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
@@ -133,15 +148,9 @@
     [self.mToolBarView setNeedsDisplay];
 }
 
-- (void)pressedOkButton
+-(void)dBVCEnterEditMode
 {
-    NSLog(@"pressedOkButton");
-    [self pressedAddButton];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self toolBarEnterEditMode];
 }
 
 @end
