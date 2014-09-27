@@ -12,8 +12,12 @@
 #import "PreviewViewController.h"
 #import "SettingViewController.h"
 #import "DragButtonsViewController.h"
+#import "DragViewTypeChoiseView.h"
 
-@interface ViewController ()<toolBarProtocol, DragButtonsViewControllerProtocol>
+@interface ViewController ()<toolBarProtocol, DragButtonsViewControllerProtocol, DragViewTypeChoiseViewProtocol>
+{
+    DragViewTypeChoiseView *mDragViewTypeChoiseView;
+}
 @property (nonatomic, strong)ToolBarView *mToolBarView;
 @property (nonatomic, strong)MRFlipTransition *previewAnimator;
 @property (nonatomic, strong)MRFlipTransition *settingAnimator;
@@ -125,13 +129,9 @@
 - (void)pressedAddButton
 {
     NSLog(@"pressedAddButton");
-//    ToolBarButtonModel *model1 = [[ToolBarButtonModel alloc] initWithDisplayName:@"预览" andTag:KPreviewButtonTag];
-//    ToolBarButtonModel *model2 = [[ToolBarButtonModel alloc] initWithDisplayName:@"编辑" andTag:KEditButtonTag];
-//    ToolBarButtonModel *model3 = [[ToolBarButtonModel alloc] initWithDisplayName:@"设置" andTag:KSettingButtonTag];
-//    NSMutableArray *modelArray = [[NSMutableArray alloc] initWithObjects:model1, model2, model3, nil];
-//    
-//    [self.mToolBarView setMToolBarButtonArray:modelArray];
-//    [self.mToolBarView setNeedsDisplay];
+    mDragViewTypeChoiseView = [[DragViewTypeChoiseView alloc] initWithFrame:self.view.frame];
+    mDragViewTypeChoiseView.delegate = self;
+    [self.view addSubview:mDragViewTypeChoiseView];
 }
 
 - (void)pressedOkButton
@@ -151,6 +151,11 @@
 -(void)dBVCEnterEditMode
 {
     [self toolBarEnterEditMode];
+}
+
+-(void)removeDragViewTypeChoiseView
+{
+    [mDragViewTypeChoiseView removeFromSuperview];
 }
 
 @end

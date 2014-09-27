@@ -63,11 +63,41 @@
     wDragButtonModel5.displayName = @"Calendar";
     wDragButtonModel5.displayUrl = @"12341235433";
     
+    DragViewModel *wDragButtonModel6 = [[DragViewModel alloc] init];
+    wDragButtonModel6.displayImage = [UIImage imageNamed:@"6.png"];
+    wDragButtonModel6.displayName = @"Calendar";
+    wDragButtonModel6.displayUrl = @"12341235433";
+    
+//    DragViewModel *wDragButtonModel7 = [[DragViewModel alloc] init];
+//    wDragButtonModel7.displayImage = [UIImage imageNamed:@"7.png"];
+//    wDragButtonModel7.displayName = @"Calendar";
+//    wDragButtonModel7.displayUrl = @"12341235433";
+    
+    DragViewModel *wDragButtonModel8 = [[DragViewModel alloc] init];
+    wDragButtonModel8.displayImage = [UIImage imageNamed:@"8.png"];
+    wDragButtonModel8.displayName = @"Calendar";
+    wDragButtonModel8.displayUrl = @"12341235433";
+    
+    DragViewModel *wDragButtonModel9 = [[DragViewModel alloc] init];
+    wDragButtonModel9.displayImage = [UIImage imageNamed:@"9.png"];
+    wDragButtonModel9.displayName = @"Calendar";
+    wDragButtonModel9.displayUrl = @"12341235433";
+    
+    DragViewModel *wDragButtonModel10 = [[DragViewModel alloc] init];
+    wDragButtonModel10.displayImage = [UIImage imageNamed:@"10.png"];
+    wDragButtonModel10.displayName = @"Calendar";
+    wDragButtonModel10.displayUrl = @"12341235433";
+    
     [mDragButtonModels addObject:wDragButtonModel1];
     [mDragButtonModels addObject:wDragButtonModel2];
     [mDragButtonModels addObject:wDragButtonModel3];
     [mDragButtonModels addObject:wDragButtonModel4];
     [mDragButtonModels addObject:wDragButtonModel5];
+    [mDragButtonModels addObject:wDragButtonModel6];
+//    [mDragButtonModels addObject:wDragButtonModel7];
+    [mDragButtonModels addObject:wDragButtonModel8];
+    [mDragButtonModels addObject:wDragButtonModel9];
+    [mDragButtonModels addObject:wDragButtonModel10];
     
     for (int i = 0; i < [mDragButtonModels count]; i++) {
 //        int row = i/NumOfButtonEachRow;//第几行
