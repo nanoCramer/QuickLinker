@@ -8,7 +8,6 @@
 
 #import "ToolBarView.h"
 
-//const int ToolBarHeight = 45;
 #define KPreviewColor [UIColor redColor]
 //#define KPreviewButtonTag   0x101+1;
 //#define KEditButtonTag      0x101+2;
@@ -103,6 +102,9 @@
             break;
         case KOkButtonTag:
             return [UIColor lightGrayColor];
+            break;
+        case KCancelButtonTag:
+            return [UIColor purpleColor];
             break;
         default:
             NSLog(@"error Tag");

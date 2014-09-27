@@ -15,6 +15,21 @@
 		DE0347EA19D4AF4600CC9431 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0347E819D4AF4600CC9431 /* LaunchScreen.xib */; };
 		DE0347F619D4AF4600CC9431 /* QuickLinkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0347F519D4AF4600CC9431 /* QuickLinkerTests.m */; };
 		DE03480619D4B18A00CC9431 /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE03480519D4B18A00CC9431 /* ToolBarView.m */; };
+		DE44CECE19D6481A0011B9E1 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEC519D6481A0011B9E1 /* 1.png */; };
+		DE44CECF19D6481A0011B9E1 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEC619D6481A0011B9E1 /* 10.png */; };
+		DE44CED019D6481A0011B9E1 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEC719D6481A0011B9E1 /* 2.png */; };
+		DE44CED119D6481A0011B9E1 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEC819D6481A0011B9E1 /* 3.png */; };
+		DE44CED219D6481A0011B9E1 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEC919D6481A0011B9E1 /* 4.png */; };
+		DE44CED319D6481A0011B9E1 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CECA19D6481A0011B9E1 /* 5.png */; };
+		DE44CED419D6481A0011B9E1 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CECB19D6481A0011B9E1 /* 6.png */; };
+		DE44CED519D6481A0011B9E1 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CECC19D6481A0011B9E1 /* 8.png */; };
+		DE44CED619D6481A0011B9E1 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CECD19D6481A0011B9E1 /* 9.png */; };
+		DE44CEDE19D648210011B9E1 /* DragButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CED919D648210011B9E1 /* DragButtonsViewController.m */; };
+		DE44CEDF19D648210011B9E1 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CEDB19D648210011B9E1 /* PreviewViewController.m */; };
+		DE44CEE019D648210011B9E1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CEDD19D648210011B9E1 /* SettingViewController.m */; };
+		DE44CEE619D648270011B9E1 /* MRFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CEE319D648270011B9E1 /* MRFlipTransition.m */; };
+		DE44CEE719D648270011B9E1 /* UIViewController+MRFlipTransitino.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CEE519D648270011B9E1 /* UIViewController+MRFlipTransitino.m */; };
+		DE44CEEA19D6482F0011B9E1 /* UIDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CEE919D6482F0011B9E1 /* UIDragView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +58,27 @@
 		DE0347F519D4AF4600CC9431 /* QuickLinkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickLinkerTests.m; sourceTree = "<group>"; };
 		DE03480419D4B18A00CC9431 /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		DE03480519D4B18A00CC9431 /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
+		DE44CEC519D6481A0011B9E1 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		DE44CEC619D6481A0011B9E1 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		DE44CEC719D6481A0011B9E1 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		DE44CEC819D6481A0011B9E1 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		DE44CEC919D6481A0011B9E1 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		DE44CECA19D6481A0011B9E1 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		DE44CECB19D6481A0011B9E1 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		DE44CECC19D6481A0011B9E1 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		DE44CECD19D6481A0011B9E1 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		DE44CED819D648210011B9E1 /* DragButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragButtonsViewController.h; sourceTree = "<group>"; };
+		DE44CED919D648210011B9E1 /* DragButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragButtonsViewController.m; sourceTree = "<group>"; };
+		DE44CEDA19D648210011B9E1 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		DE44CEDB19D648210011B9E1 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		DE44CEDC19D648210011B9E1 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		DE44CEDD19D648210011B9E1 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		DE44CEE219D648270011B9E1 /* MRFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRFlipTransition.h; sourceTree = "<group>"; };
+		DE44CEE319D648270011B9E1 /* MRFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRFlipTransition.m; sourceTree = "<group>"; };
+		DE44CEE419D648270011B9E1 /* UIViewController+MRFlipTransitino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MRFlipTransitino.h"; sourceTree = "<group>"; };
+		DE44CEE519D648270011B9E1 /* UIViewController+MRFlipTransitino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MRFlipTransitino.m"; sourceTree = "<group>"; };
+		DE44CEE819D6482F0011B9E1 /* UIDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDragView.h; sourceTree = "<group>"; };
+		DE44CEE919D6482F0011B9E1 /* UIDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDragView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +120,9 @@
 		DE0347D819D4AF4600CC9431 /* QuickLinker */ = {
 			isa = PBXGroup;
 			children = (
+				DE44CEE119D648270011B9E1 /* ThirdPartyTools */,
+				DE44CED719D648210011B9E1 /* ViewController */,
+				DE44CEC419D6481A0011B9E1 /* Image */,
 				DE03480319D4B18A00CC9431 /* View */,
 				DE0347E019D4AF4600CC9431 /* ViewController.h */,
 				DE0347E119D4AF4600CC9431 /* ViewController.m */,
@@ -126,10 +165,52 @@
 		DE03480319D4B18A00CC9431 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE44CEE819D6482F0011B9E1 /* UIDragView.h */,
+				DE44CEE919D6482F0011B9E1 /* UIDragView.m */,
 				DE03480419D4B18A00CC9431 /* ToolBarView.h */,
 				DE03480519D4B18A00CC9431 /* ToolBarView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DE44CEC419D6481A0011B9E1 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				DE44CEC519D6481A0011B9E1 /* 1.png */,
+				DE44CEC619D6481A0011B9E1 /* 10.png */,
+				DE44CEC719D6481A0011B9E1 /* 2.png */,
+				DE44CEC819D6481A0011B9E1 /* 3.png */,
+				DE44CEC919D6481A0011B9E1 /* 4.png */,
+				DE44CECA19D6481A0011B9E1 /* 5.png */,
+				DE44CECB19D6481A0011B9E1 /* 6.png */,
+				DE44CECC19D6481A0011B9E1 /* 8.png */,
+				DE44CECD19D6481A0011B9E1 /* 9.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		DE44CED719D648210011B9E1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DE44CED819D648210011B9E1 /* DragButtonsViewController.h */,
+				DE44CED919D648210011B9E1 /* DragButtonsViewController.m */,
+				DE44CEDA19D648210011B9E1 /* PreviewViewController.h */,
+				DE44CEDB19D648210011B9E1 /* PreviewViewController.m */,
+				DE44CEDC19D648210011B9E1 /* SettingViewController.h */,
+				DE44CEDD19D648210011B9E1 /* SettingViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DE44CEE119D648270011B9E1 /* ThirdPartyTools */ = {
+			isa = PBXGroup;
+			children = (
+				DE44CEE219D648270011B9E1 /* MRFlipTransition.h */,
+				DE44CEE319D648270011B9E1 /* MRFlipTransition.m */,
+				DE44CEE419D648270011B9E1 /* UIViewController+MRFlipTransitino.h */,
+				DE44CEE519D648270011B9E1 /* UIViewController+MRFlipTransitino.m */,
+			);
+			path = ThirdPartyTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +293,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE44CED519D6481A0011B9E1 /* 8.png in Resources */,
+				DE44CED019D6481A0011B9E1 /* 2.png in Resources */,
+				DE44CECF19D6481A0011B9E1 /* 10.png in Resources */,
 				DE0347E519D4AF4600CC9431 /* Main.storyboard in Resources */,
+				DE44CECE19D6481A0011B9E1 /* 1.png in Resources */,
+				DE44CED419D6481A0011B9E1 /* 6.png in Resources */,
+				DE44CED219D6481A0011B9E1 /* 4.png in Resources */,
 				DE0347EA19D4AF4600CC9431 /* LaunchScreen.xib in Resources */,
+				DE44CED319D6481A0011B9E1 /* 5.png in Resources */,
+				DE44CED619D6481A0011B9E1 /* 9.png in Resources */,
+				DE44CED119D6481A0011B9E1 /* 3.png in Resources */,
 				DE0347E719D4AF4600CC9431 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,8 +324,14 @@
 			files = (
 				DE0347E219D4AF4600CC9431 /* ViewController.m in Sources */,
 				DE0347DF19D4AF4600CC9431 /* AppDelegate.m in Sources */,
+				DE44CEE619D648270011B9E1 /* MRFlipTransition.m in Sources */,
 				DE03480619D4B18A00CC9431 /* ToolBarView.m in Sources */,
+				DE44CEEA19D6482F0011B9E1 /* UIDragView.m in Sources */,
+				DE44CEE019D648210011B9E1 /* SettingViewController.m in Sources */,
+				DE44CEE719D648270011B9E1 /* UIViewController+MRFlipTransitino.m in Sources */,
+				DE44CEDE19D648210011B9E1 /* DragButtonsViewController.m in Sources */,
 				DE0347DC19D4AF4600CC9431 /* main.m in Sources */,
+				DE44CEDF19D648210011B9E1 /* PreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +522,7 @@
 				DE0347FB19D4AF4600CC9431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE0347FC19D4AF4600CC9431 /* Build configuration list for PBXNativeTarget "QuickLinkerTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +531,7 @@
 				DE0347FE19D4AF4600CC9431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

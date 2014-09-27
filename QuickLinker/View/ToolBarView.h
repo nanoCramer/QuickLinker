@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-#define KPreviewButtonTag   (0x101+1)
-#define KEditButtonTag      (0x101+2)
-#define KSettingButtonTag   (0x101+3)
-#define KAddButtonTag       (0x101+4)
-#define KOkButtonTag        (0x101+5)
+#define KPreviewButtonTag   (1001)
+#define KEditButtonTag      (1002)
+#define KSettingButtonTag   (1003)
+#define KAddButtonTag       (1004)
+#define KOkButtonTag        (1005)
+#define KCancelButtonTag    (1006)
 
+#define KRemoveButtonTag    (1010)
 
-#define KRemoveButtonTag    (0x101+10)
+#define KToolBarHeight 45
+
 
 @protocol toolBarProtocol;
 @interface ToolBarView : UIView

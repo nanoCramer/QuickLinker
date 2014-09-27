@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuickLinker/View/ToolBarView.m"
-            timestampString = "433377952.122731"
+            timestampString = "433473653.394473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-clickedButton:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QuickLinker/ViewController.m"
-            timestampString = "433375076.774734"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-clickToolBarButton:"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-initWithDisplayName:andTag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
