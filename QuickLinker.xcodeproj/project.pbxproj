@@ -33,6 +33,7 @@
 		DE44CF0419D65E370011B9E1 /* DragViewDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = DE44CEF819D65E370011B9E1 /* DragViewDelete.png */; };
 		DE44CF3919D69D7C0011B9E1 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CF3819D69D7C0011B9E1 /* PulsingHaloLayer.m */; };
 		DE44CF3C19D6A08B0011B9E1 /* DragViewTypeChoiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CF3B19D6A08B0011B9E1 /* DragViewTypeChoiseView.m */; };
+		DE44CF3F19D6DD6B0011B9E1 /* ContactTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44CF3E19D6DD6B0011B9E1 /* ContactTypeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		DE44CF3819D69D7C0011B9E1 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 		DE44CF3A19D6A08B0011B9E1 /* DragViewTypeChoiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragViewTypeChoiseView.h; sourceTree = "<group>"; };
 		DE44CF3B19D6A08B0011B9E1 /* DragViewTypeChoiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragViewTypeChoiseView.m; sourceTree = "<group>"; };
+		DE44CF3D19D6DD6B0011B9E1 /* ContactTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTypeViewController.h; sourceTree = "<group>"; };
+		DE44CF3E19D6DD6B0011B9E1 /* ContactTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTypeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 				DE44CEDB19D648210011B9E1 /* PreviewViewController.m */,
 				DE44CEDC19D648210011B9E1 /* SettingViewController.h */,
 				DE44CEDD19D648210011B9E1 /* SettingViewController.m */,
+				DE44CF3D19D6DD6B0011B9E1 /* ContactTypeViewController.h */,
+				DE44CF3E19D6DD6B0011B9E1 /* ContactTypeViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				DE44CEE019D648210011B9E1 /* SettingViewController.m in Sources */,
 				DE44CEE719D648270011B9E1 /* UIViewController+MRFlipTransitino.m in Sources */,
 				DE44CF3919D69D7C0011B9E1 /* PulsingHaloLayer.m in Sources */,
+				DE44CF3F19D6DD6B0011B9E1 /* ContactTypeViewController.m in Sources */,
 				DE44CEDE19D648210011B9E1 /* DragButtonsViewController.m in Sources */,
 				DE0347DC19D4AF4600CC9431 /* main.m in Sources */,
 				DE44CEDF19D648210011B9E1 /* PreviewViewController.m in Sources */,

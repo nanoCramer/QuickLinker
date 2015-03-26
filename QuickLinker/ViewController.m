@@ -13,14 +13,16 @@
 #import "SettingViewController.h"
 #import "DragButtonsViewController.h"
 #import "DragViewTypeChoiseView.h"
+#import "ContactTypeViewController.h"
 
-@interface ViewController ()<toolBarProtocol, DragButtonsViewControllerProtocol, DragViewTypeChoiseViewProtocol>
+@interface ViewController ()<toolBarProtocol, DragButtonsViewControllerProtocol, DragViewTypeChoiseViewProtocol, ContactTypeViewControllerProtocol>
 {
     DragViewTypeChoiseView *mDragViewTypeChoiseView;
 }
 @property (nonatomic, strong)ToolBarView *mToolBarView;
 @property (nonatomic, strong)MRFlipTransition *previewAnimator;
 @property (nonatomic, strong)MRFlipTransition *settingAnimator;
+@property (nonatomic, strong)MRFlipTransition *contactTypeAnimator;
 @property (nonatomic, strong)DragButtonsViewController *mDragButtonsVC;
 
 @end
@@ -53,6 +55,7 @@
     // 页面跳转
     self.previewAnimator = [[MRFlipTransition alloc] initWithPresentingViewController:self];
     self.settingAnimator = [[MRFlipTransition alloc] initWithPresentingViewController:self];
+    self.contactTypeAnimator = [[MRFlipTransition alloc] initWithPresentingViewController:self];
 }
 
 // toolBarProtocol
@@ -160,15 +163,14 @@
 
 -(void)choiceQuickLinkType:(ButtonType)type
 {
-//    ButtonTypeContact = 0,
-//    ButtonTypeSafari,
-//    ButtonTypeApp,
-//    ButtonTypeSystem
     switch (type) {
         case ButtonTypeContact:
-            
+        {
+            ContactTypeViewController *controller = [[ContactTypeViewController alloc] initWithNibName:nil bundle:nil];
+            controller.delegate = self;
+            [self.contactTypeAnimator present:controller from:MRFlipTransitionPresentingFromInfinityAway completion:nil];
             break;
-         
+        }
         case ButtonTypeSafari:
             
             break;

@@ -58,7 +58,7 @@
     [safariButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [safariButton setTitle:@"Safari" forState:UIControlStateNormal];
     [safariButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-    safariButton.tag = ButtonTypeContact;
+    safariButton.tag = ButtonTypeSafari;
     halo2.position = CGPointMake(buttonL / 2, buttonL / 2);
     [safariButton.layer insertSublayer:halo2 below:safariButton.layer];
     
@@ -68,7 +68,7 @@
     [appButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [appButton setTitle:@"App" forState:UIControlStateNormal];
     [appButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-    appButton.tag = ButtonTypeContact;
+    appButton.tag = ButtonTypeApp;
     halo3.position = CGPointMake(buttonL / 2, buttonL / 2);
     [appButton.layer insertSublayer:halo3 below:appButton.layer];
     
@@ -78,7 +78,7 @@
     [systemButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [systemButton setTitle:@"系统" forState:UIControlStateNormal];
     [systemButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-    systemButton.tag = ButtonTypeContact;
+    systemButton.tag = ButtonTypeSystem;
     halo4.position = CGPointMake(buttonL / 2, buttonL / 2);
     [systemButton.layer insertSublayer:halo4 below:systemButton.layer];
     
